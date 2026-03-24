@@ -2,15 +2,22 @@
 #define FILESTATE_H
 
 #include <QString> //для пути к файлу
-#include <QtGlobal> //для размера файла
+#include <QFileInfo> //для размера файла
 
-struct FileState
+class FileState
 {
-    QString way; //путь к файлу
+public:
+    FileState(const QString & failWay);//конструктор класса
 
-    bool exist = false; //есть ли файл
+    QString getWay() const; //получаем путь к файлу
+    bool getExist() const; //узнаем есть ли файл
+    int getSize() const; //узнаем его размер
 
-    qint64 size = 0; //его размер
+private:
+    //храним данные о файлах
+    QString failWay_d;
+    bool exist_d;
+    int size_d;
 };
 
 #endif // FILESTATE_H
