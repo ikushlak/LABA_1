@@ -4,19 +4,22 @@ FileState::FileState(const QString & failWay):
     failWay_d(failWay), exist_d(false), size_d(0)
 {
     QFileInfo info(failWay_d);
+    // Создаём QFileInfo, чтобы получить текущее состояние файла.
 
     exist_d = info.exists();
+    // Сохраняем факт существования файла.
 
     if(exist_d)
     {
         size_d = int(info.size());
+        // Сохраняем факт существования файла
     }
     else
     {
         size_d = 0;
     }
 
-} //запоминаем путь к файлу
+}
 
 QString FileState::getWay() const
 {
