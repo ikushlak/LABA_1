@@ -12,7 +12,11 @@ class FileWatcher : public QObject
     Q_OBJECT
 
 public:
-    explicit FileWatcher(const QStringList &fileWays, QObject *parent = nullptr);
+    explicit FileWatcher(QObject *parent = nullptr);
+
+    void addWay(const QStringList &fileWays);//добавление нового пути отслеживания
+    bool deleteWay(const QString &way);//удаление пути отслеживания
+    QList<FileState> getWatchedFiles() const;//текущий список отслеживаемых файлов
 
 signals:
     void fileChanged(const FileState &file);
@@ -22,7 +26,7 @@ signals:
     //файл появился или исчез.
 
 private slots:
-    void checkFiles();
+    void checkFiles();//вызов таймера для проверки файлов
 
 private:
     QList<FileState> watchedFiles;

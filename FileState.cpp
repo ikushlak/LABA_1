@@ -12,7 +12,7 @@ FileState::FileState(const QString & failWay):
     if(exist_d)
     {
         size_d = int(info.size());
-        // Сохраняем факт существования файла
+        // Сохраняем размер файла
     }
     else
     {
